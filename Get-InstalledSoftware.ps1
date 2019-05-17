@@ -126,7 +126,3 @@ function Get-InstalledSoftware
     {
     }
 } # end  function Get-InstalledSoftware
-
-$software = Get-InstalledSoftware -ComputerName localhost
-
-$software | fl
