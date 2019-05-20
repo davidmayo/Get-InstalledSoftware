@@ -1,6 +1,6 @@
 <#
 .Synopsis
-   Get installed software from a remote PC without using WS-Man
+   Get installed software from a remote PC without using WS-Man.
 .DESCRIPTION
    Get installed software from a remote PC without using WS-Man. Uses DCOM via Get-WMIObject and StdRegProv methods.
 .EXAMPLE
@@ -22,7 +22,7 @@
    ComputerName, SoftwareName, SoftwareVersion, Publisher, RegistryLocation
 .NOTES
    Most people would recommend turning on WS-Man and do this via PS-Remoting.
-   But some of us work in environments where that's not allowed by policy, so here we are.
+   This is a solution for environments where WS-Man is not an option.
 #>
 function Get-InstalledSoftware
 {
@@ -113,8 +113,8 @@ function Get-InstalledSoftware
                                 }
                             )
                         }
-                    }
-                } # end   try
+                    } # end   foreach($SoftwareRegistryKey in $SoftwareRegistryKeys)
+                } # end   try{}
                 catch
                 {
                     write-error "Error enumerating registry values on [$computer]."
